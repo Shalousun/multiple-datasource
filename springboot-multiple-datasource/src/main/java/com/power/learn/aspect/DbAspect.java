@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DbAspect extends DataSourceAspect {
 
-    @Pointcut("execution(* com.boco.learn.dao.*.*(..))")
+    @Pointcut("execution(* com.power.learn.dao.*.*(..))")
     @Override
     protected void datasourceAspect() {
         super.datasourceAspect();

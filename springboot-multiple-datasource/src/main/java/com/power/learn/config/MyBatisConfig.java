@@ -6,6 +6,7 @@ import com.power.mybatis.CustomSqlSessionTemplate;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +19,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@MapperScan(basePackages = MyBatisConfig.PACKAGE, sqlSessionTemplateRef = "sqlSessionTemplate")
+@MapperScan(basePackages = MyBatisConfig.BASE_PACKAGE, sqlSessionTemplateRef = "sqlSessionTemplate")
 public class MyBatisConfig extends AbstractDataSourceConfig {
 
-    static final String PACKAGE = "com.boco.learn.dao";
+    static final String BASE_PACKAGE = "com.power.learn.dao";
 
-    static final String MAPPER_LOCATION = "classpath:com/boco/learn/mapping/*.xml";
+    static final String ALIASES_PACKAGE = "com.power.learn.model";
+
+    static final String MAPPER_LOCATION = "classpath:com/power/learn/mapping/*.xml";
+
 
     @Primary
     @Bean(name = "dataSourceOne")
@@ -86,7 +90,8 @@ public class MyBatisConfig extends AbstractDataSourceConfig {
     private SqlSessionFactory createSqlSessionFactory(DataSource dataSource) throws Exception{
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.boco.learn.model");
+        bean.setVfs(SpringBootVFS.class);
+        bean.setTypeAliasesPackage(ALIASES_PACKAGE);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATION));
         return bean.getObject();
     }

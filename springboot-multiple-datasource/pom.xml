@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.boco.learn</groupId>
-    <artifactId>springboot-mutiple-datasource</artifactId>
+    <artifactId>springboot-multiple-datasource</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -168,6 +168,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>springboot-mutiple-datasource</finalName>
+        <finalName>springboot-multiple-datasource</finalName>
     </build>
 </project>

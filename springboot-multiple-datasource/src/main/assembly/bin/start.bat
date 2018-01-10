@@ -1,6 +1,6 @@
 echo off
 
-set APP_NAME=springboot-mutiple-datasource.jar
+set APP_NAME=springboot-multiple-datasource.jar
 set CONFIG= -Dlogging.path=../logs -Dlogging.config=../config/log4j2.xml -Dspring.config.location=../config/application.yml 
 
 set DEBUG_OPTS=

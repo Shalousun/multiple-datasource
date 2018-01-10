@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SERVER_NAME='springboot-mutiple-datasource'
-JAR_NAME='springboot-mutiple-datasource.jar'
+SERVER_NAME='springboot-multiple-datasource'
+JAR_NAME='springboot-multiple-datasource.jar'
 cd `dirname $0`
 BIN_DIR=`pwd`
 cd ..

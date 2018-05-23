@@ -9,7 +9,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 import java.util.Properties;
 
-@Component
+//@Component
 public class TxConfigBeanName {
 
     @Autowired

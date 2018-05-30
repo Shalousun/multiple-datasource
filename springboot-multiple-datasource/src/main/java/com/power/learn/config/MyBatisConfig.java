@@ -92,6 +92,7 @@ public class MyBatisConfig extends AbstractDataSourceConfig {
         bean.setDataSource(dataSource);
         bean.setVfs(SpringBootVFS.class);
         bean.setTypeAliasesPackage(ALIASES_PACKAGE);
+        bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATION));
         return bean.getObject();
     }

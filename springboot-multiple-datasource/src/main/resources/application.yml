@@ -12,7 +12,7 @@ spring:
         password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
         minIdle: 1
-        maxActive: 2
+        maxActive: 20
         initialSize: 1
         timeBetweenEvictionRunsMillis: 3000
         minEvictableIdleTimeMillis: 300000
@@ -33,7 +33,7 @@ spring:
         password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
         minIdle: 1
-        maxActive: 2
+        maxActive: 20
         initialSize: 1
         timeBetweenEvictionRunsMillis: 3000
         minEvictableIdleTimeMillis: 300000

@@ -33,10 +33,6 @@ public abstract class AbstractDataSourceConfig {
         prop.put("minIdle", env.getProperty(prefix + "minIdle", Integer.class));
         prop.put("maxWait", env.getProperty(prefix + "maxWait", Integer.class));
         prop.put("poolPreparedStatements", env.getProperty(prefix + "poolPreparedStatements", Boolean.class));
-
-        prop.put("maxPoolPreparedStatementPerConnectionSize",
-                env.getProperty(prefix + "maxPoolPreparedStatementPerConnectionSize", Integer.class));
-
         prop.put("maxPoolPreparedStatementPerConnectionSize",
                 env.getProperty(prefix + "maxPoolPreparedStatementPerConnectionSize", Integer.class));
         prop.put("validationQuery", env.getProperty(prefix + "validationQuery"));
@@ -46,6 +42,7 @@ public abstract class AbstractDataSourceConfig {
         prop.put("testWhileIdle", env.getProperty(prefix + "testWhileIdle", Boolean.class));
         prop.put("timeBetweenEvictionRunsMillis", env.getProperty(prefix + "timeBetweenEvictionRunsMillis", Integer.class));
         prop.put("minEvictableIdleTimeMillis", env.getProperty(prefix + "minEvictableIdleTimeMillis", Integer.class));
+        prop.put("useGlobalDataSourceStat","true");
         prop.put("filters", env.getProperty(prefix + "filters"));
         return prop;
     }

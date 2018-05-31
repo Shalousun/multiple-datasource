@@ -25,6 +25,7 @@ spring:
         # 打开PSCache，并且指定每个连接上PSCache的大小
         poolPreparedStatements: true
         maxPoolPreparedStatementPerConnectionSize: 20
+        useGlobalDataSourceStat：true
         filters: stat,wall,log4j2
       two:
         url: jdbc:mysql://localhost:3306/springlearn?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
@@ -45,9 +46,12 @@ spring:
         # 打开PSCache，并且指定每个连接上PSCache的大小
         poolPreparedStatements: true
         maxPoolPreparedStatementPerConnectionSize: 20
+        useGlobalDataSourceStat：true
         filters: stat,wall,log4j2
   jta:
-    log-dir: classpath:tx-logs
+    atomikos:
+      properties:
+        log-base-dir: ../logs
     transaction-manager-id: txManager
 server:
   port: 8080

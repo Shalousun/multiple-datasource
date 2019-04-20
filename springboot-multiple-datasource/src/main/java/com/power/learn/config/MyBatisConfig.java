@@ -26,8 +26,7 @@ public class MyBatisConfig extends AbstractDataSourceConfig {
 
     static final String ALIASES_PACKAGE = "com.power.learn.model";
 
-    static final String MAPPER_LOCATION = "classpath:com/power/learn/mapping/*.xml";
-
+    static final String MAPPER_LOCATION = "classpath:mappers/*.xml";
 
     @Primary
     @Bean(name = "dataSourceOne")
@@ -45,7 +44,7 @@ public class MyBatisConfig extends AbstractDataSourceConfig {
 
 
     @Bean("dynamicDataSource")
-    public DynamicDataSource dynamicDataSource(@Qualifier("dataSourceOne")DataSource dataSourceOne,@Qualifier("dataSourceTwo")DataSource dataSourceTwo) {
+    public DynamicDataSource dynamicDataSource(@Qualifier("dataSourceOne")DataSource dataSourceOne, @Qualifier("dataSourceTwo")DataSource dataSourceTwo) {
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put("one",dataSourceOne);
         targetDataSources.put("two",dataSourceTwo);
@@ -72,7 +71,7 @@ public class MyBatisConfig extends AbstractDataSourceConfig {
 
 
     @Bean(name = "sqlSessionTemplate")
-    public CustomSqlSessionTemplate sqlSessionTemplate(@Qualifier("sqlSessionFactoryOne")SqlSessionFactory factoryOne,@Qualifier("sqlSessionFactoryTwo")SqlSessionFactory factoryTwo) throws Exception {
+    public CustomSqlSessionTemplate sqlSessionTemplate(@Qualifier("sqlSessionFactoryOne")SqlSessionFactory factoryOne, @Qualifier("sqlSessionFactoryTwo")SqlSessionFactory factoryTwo) throws Exception {
         Map<Object,SqlSessionFactory> sqlSessionFactoryMap = new HashMap<>();
         sqlSessionFactoryMap.put("one",factoryOne);
         sqlSessionFactoryMap.put("two",factoryTwo);

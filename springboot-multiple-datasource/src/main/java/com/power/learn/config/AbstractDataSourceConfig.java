@@ -9,11 +9,11 @@ import java.util.Properties;
 /**
  * 针对springboot的数据源配置
  *
- * @author yu on 2017/12/28.
+ * @author yu on 2019/04/21.
  */
 public abstract class AbstractDataSourceConfig {
 
-    protected DataSource getDataSource(Environment env,String prefix,String dataSourceName){
+    protected DataSource getDataSource(Environment env, String prefix, String dataSourceName){
         Properties prop = build(env,prefix);
         AtomikosDataSourceBean ds = new AtomikosDataSourceBean();
         ds.setXaDataSourceClassName("com.alibaba.druid.pool.xa.DruidXADataSource");

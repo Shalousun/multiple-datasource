@@ -1,6 +1,7 @@
 package com.power.learn.service;
 
-import com.boco.common.util.RandomUtil;
+
+import com.power.common.util.RandomUtil;
 import com.power.learn.model.Student;
 import org.junit.Test;
 

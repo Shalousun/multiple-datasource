@@ -2,10 +2,10 @@ package com.power.learn.service;
 
 import javax.annotation.Resource;
 
+import com.power.common.model.CommonResult;
 import com.power.learn.model.Student;
 import org.junit.Test;
 
-import com.boco.common.model.CommonResult;
 
 /**
  * @author yu on 2017/12/28.

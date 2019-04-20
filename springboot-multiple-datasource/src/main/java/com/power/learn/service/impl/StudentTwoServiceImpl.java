@@ -1,7 +1,6 @@
 package com.power.learn.service.impl;
 
-import com.boco.common.model.CommonResult;
-
+import com.power.common.model.CommonResult;
 import com.power.learn.dao.StudentTwoDao;
 import com.power.learn.model.Student;
 import com.power.learn.service.StudentService;
@@ -28,56 +27,46 @@ public class StudentTwoServiceImpl implements StudentService {
 
     @Override
     public CommonResult save(Student entity) {
-        CommonResult result = new CommonResult();
         try {
             studentTwoDao.save(entity);
-            result.setSuccess(true);
+            return CommonResult.ok();
         } catch (Exception e) {
-            result.setMessage("添加数据失败");
-            logger.error("StudentService添加数据异常：",e);
+            logger.error("StudentService添加数据异常：", e);
+            return CommonResult.fail();
         }
-        return result;
     }
 
     @Override
     public CommonResult update(Student entity) {
-        CommonResult result = new CommonResult();
         try {
             studentTwoDao.update(entity);
-            result.setSuccess(true);
+            return CommonResult.ok();
         } catch (Exception e) {
-            result.setMessage("修改数据失败");
-            logger.error("StudentService修改数据异常：",e);
+            logger.error("StudentService修改数据异常：", e);
+            return CommonResult.fail();
         }
-        return result;
     }
 
     @Override
     public CommonResult delete(int id) {
-        CommonResult result = new CommonResult();
         try {
             studentTwoDao.delete(id);
-            result.setSuccess(true);
+            return CommonResult.ok();
         } catch (Exception e) {
-            result.setMessage("删除数据失败");
-            logger.error("StudentService删除数据异常：",e);
+            logger.error("StudentService删除数据异常：", e);
+            return CommonResult.fail();
         }
-        return result;
     }
 
     @Override
     public CommonResult queryById(int id) {
-        CommonResult result = new CommonResult();
         Student entity = studentTwoDao.queryById(id);
         if (null != entity) {
-            //成功返回数据
-            result.setData(entity);
-            result.setSuccess(true);
+            return CommonResult.ok().setResult(entity);
         } else {
-            result.setMessage("没有找到匹配数据");
-            logger.info("StudentService未查询到数据，编号：{}",id);
+            logger.info("StudentService未查询到数据，编号：{}", id);
+            return CommonResult.fail();
         }
-        return result;
     }
 
     @Override

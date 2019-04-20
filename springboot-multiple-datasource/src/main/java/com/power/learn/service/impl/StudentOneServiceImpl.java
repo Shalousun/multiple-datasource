@@ -1,7 +1,7 @@
 package com.power.learn.service.impl;
 
-import com.boco.common.model.CommonResult;
 
+import com.power.common.model.CommonResult;
 import com.power.learn.dao.StudentOneDao;
 import com.power.learn.dao.StudentTwoDao;
 import com.power.learn.model.Student;
@@ -19,6 +19,7 @@ import java.util.Map;
 
 /**
  * Created by ApplicationPower.
+ *
  * @author yu on 2017年12月23日 星期六  22:01:41.
  */
 @Service("studentOneService")
@@ -29,80 +30,69 @@ public class StudentOneServiceImpl implements StudentService {
      */
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Resource
-	private StudentOneDao studentOneDao;
+    @Resource
+    private StudentOneDao studentOneDao;
 
-	@Resource
+    @Resource
     private StudentTwoDao studentTwoDao;
-	
 
-	@Transactional
-	@Override
-	public CommonResult save(Student entity) {
-		CommonResult result = new CommonResult();
+
+    @Transactional
+    @Override
+    public CommonResult save(Student entity) {
         try {
-        	studentOneDao.save(entity);
-        	studentTwoDao.save(entity);
-        	int a = 10/0;
-        	result.setSuccess(true);
+            studentOneDao.save(entity);
+            studentTwoDao.save(entity);
+            //int a = 10 / 0;
         } catch (Exception e) {
-        	result.setMessage("添加数据失败");
-        	logger.error("StudentService添加数据异常：",e);
-        	throw new RuntimeException("添加数据失败");
+            logger.error("StudentService添加数据异常：", e);
+            throw new RuntimeException("添加数据失败");
         }
-        return result;
-	}
+        return CommonResult.ok();
+    }
 
-	@Override
-	public CommonResult update(Student entity) {
-		CommonResult result = new CommonResult();
+    @Override
+    public CommonResult update(Student entity) {
         try {
             studentOneDao.update(entity);
-            result.setSuccess(true);
         } catch (Exception e) {
-            result.setMessage("修改数据失败");
-            logger.error("StudentService修改数据异常：",e);
+            logger.error("StudentService修改数据异常：", e);
+            return CommonResult.fail();
         }
-        return result;
-	}
+        return CommonResult.ok();
+    }
 
-	@Override
-	public CommonResult delete(int id) {
-		CommonResult result = new CommonResult();
+    @Override
+    public CommonResult delete(int id) {
         try {
             studentOneDao.delete(id);
-            result.setSuccess(true);
         } catch (Exception e) {
-            result.setMessage("删除数据失败");
-            logger.error("StudentService删除数据异常：",e);
+            logger.error("StudentService删除数据异常：", e);
+            return CommonResult.fail();
         }
-        return result;
-	}
+        return CommonResult.ok();
+    }
 
-	@Override
-	public CommonResult queryById(int id) {
-	    CommonResult result = new CommonResult();
-	    Student entity = studentOneDao.queryById(id);
-	    if (null != entity) {
-	        //成功返回数据
-        	result.setData(entity);
-        	result.setSuccess(true);
+    @Override
+    public CommonResult queryById(int id) {
+        Student entity = studentOneDao.queryById(id);
+        if (null != entity) {
+            return CommonResult.ok().setResult(entity);
         } else {
-        	result.setMessage("没有找到匹配数据");
-        	logger.info("StudentService未查询到数据，编号：{}",id);
+            logger.info("StudentService未查询到数据，编号：{}", id);
+            return CommonResult.fail();
         }
-        return result;
-	}
+    }
 
-	@Override
+    @Override
     public PageInfo queryPage(int offset, int limit) {
-        PageHelper.offsetPage(offset,limit);
+        PageHelper.offsetPage(offset, limit);
         List<Student> list = studentOneDao.queryPage();
         return new PageInfo(list);
     }
 
     @Override
-    public List<Map<String,Object>> queryToListMap(Map<String,Object> params){
+    public List<Map<String, Object>> queryToListMap(Map<String, Object> params) {
         return studentOneDao.queryToListMap(params);
     }
 }

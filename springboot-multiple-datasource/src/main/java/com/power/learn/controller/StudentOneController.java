@@ -1,8 +1,8 @@
 package com.power.learn.controller;
 
-import com.boco.common.model.CommonResult;
-import com.boco.common.util.RandomUtil;
 
+import com.power.common.model.CommonResult;
+import com.power.common.util.RandomUtil;
 import com.power.learn.model.Student;
 import com.power.learn.service.StudentService;
 import com.github.pagehelper.PageInfo;

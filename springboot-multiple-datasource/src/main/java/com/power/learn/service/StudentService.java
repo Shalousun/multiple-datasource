@@ -1,6 +1,6 @@
 package com.power.learn.service;
 
-import com.boco.common.model.CommonResult;
+import com.power.common.model.CommonResult;
 import com.power.learn.model.Student;
 import com.github.pagehelper.PageInfo;
 
